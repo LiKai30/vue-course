@@ -49,6 +49,7 @@
 <!-- 行为 -->
 <script>
 export default {
+  // 当前组件的数据
   data () {
     return {
       // 这是登陆表单的数据绑定
@@ -80,7 +81,8 @@ export default {
     login () {
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return
-        // {date： res} 可以查看meta中的状态码，200则登陆成功
+        // 由于get函数返回一个promise对象，为了简化promise操作，使用async和await优化
+        // {date： res}j解构赋值  可以查看meta中的状态码，200则登陆成功
         const { data: res } = await this.$http.post('login', this.loginForm)
         if (res.meta.status !== 200) return this.$message.error('登陆失败！')
         this.$message.success('登陆成功！')
@@ -90,6 +92,7 @@ export default {
 
 				*/
         // 保存token
+        // console.log(res)
         window.sessionStorage.setItem('token', res.data.token)
         // 跳转到后台主页，/home
         this.$router.push('/home')
@@ -100,7 +103,6 @@ export default {
 </script>
 
 <!-- scoped设置单个组件样式 -->
-
 <style lang="less" scoped>
 .login_container{
 	background-color:#2b4b6b;
