@@ -23,7 +23,8 @@ import {
   Switch,
   Tooltip,
   Pagination,
-  Dialog
+  Dialog,
+  MessageBox
 } from 'element-ui'
 
 // 注册为全局组件
@@ -36,7 +37,7 @@ Vue.use(Main)
 Vue.use(Aside)
 Vue.use(Header)
 Vue.use(Menu)
-Vue.use(Message)
+// Vue.use(Message)
 Vue.use(MenuItem)
 Vue.use(MenuItemGroup)
 Vue.use(Submenu)
@@ -54,3 +55,4 @@ Vue.use(Dialog)
 
 // 和前面的不同，Message的使用需要挂载到vue的原型上
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm

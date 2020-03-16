@@ -59,7 +59,6 @@ export default {
       },
 
       // 这是表单的验证规则，不同规则以{}区分
-      // 没有判空啊？？
       loginFormRules: {
         username: [
           { requird: true, message: '请输入用户名！', trigger: 'blur' },

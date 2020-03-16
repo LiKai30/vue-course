@@ -3,29 +3,15 @@
     <!-- 头部 -->
     <el-header>
       <div>
-        <img
-          src
-          alt
-        >
         <span>电商后台管理系统</span>
       </div>
-      <el-button
-        type="info"
-        @click="logout"
-      >
-        退出
-      </el-button>
+      <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <el-container>
       <!-- 侧边栏 -->
       <!-- 三元运算符的使用 -->
       <el-aside :width="isCollapse ? '64px':'200px'">
-        <div
-          class="toggle-button"
-          @click="toggleCollapse"
-        >
-          |||
-        </div>
+        <div class="toggle-button" @click="toggleCollapse">|||</div>
         <!-- 侧边栏菜单区域 -->
         <el-menu
           background-color="#333744 "
@@ -38,11 +24,7 @@
           :default-active="activePath"
         >
           <!-- 一级菜单 -->
-          <el-submenu
-            v-for="item in menulist"
-            :key="item.id"
-            :index="item.id+''"
-          >
+          <el-submenu v-for="item in menulist" :key="item.id" :index="item.id+''">
             <!-- 一级菜单的模板 -->
             <template slot="title">
               <!-- 图标 -->
@@ -77,47 +59,48 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       // 左侧菜单数据
       menulist: [],
       iconObj: {
-        125: 'el-icon-user-solid',
-        103: 'el-icon-s-management',
-        101: 'el-icon-s-goods',
-        102: 'el-icon-s-order',
-        145: 'el-icon-s-data'
+        125: "el-icon-user-solid",
+        103: "el-icon-s-management",
+        101: "el-icon-s-goods",
+        102: "el-icon-s-order",
+        145: "el-icon-s-data"
       },
       // 侧边边栏的折叠
       isCollapse: false,
       // 默认是一个空地址
-      activePath: ''
+      activePath: ""
     }
   },
   // 生命周期函数?
-  created () {
+  created() {
     this.getMenuList()
-    this.activePath = window.sessionStorage.getItem('activePath')
+    this.activePath = window.sessionStorage.getItem("activePath")
   },
   methods: {
-    async getMenuList () {
+    //获取所有菜单数据
+    async getMenuList() {
       // 因为get函数返回值是一个promise，所以通过async和await来简化promise
-      const { data: res } = await this.$http.get('menus')
+      const { data: res } = await this.$http.get("menus")
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
       // 为了能够在页面中渲染出来，我们应该把获取到的菜单数据挂载到自己的data中
     },
-    logout () {
+    logout() {
       window.sessionStorage.clear()
-      this.$router.push('/login')
+      this.$router.push("/login")
     },
-    toggleCollapse () {
+    toggleCollapse() {
       // 实现不断切换
       this.isCollapse = !this.isCollapse
     },
     // 保存链接的激活状态
-    saveNavState (activePath) {
-      window.sessionStorage.setItem('activePath', activePath)
+    saveNavState(activePath) {
+      window.sessionStorage.setItem("activePath", activePath)
       this.activePath = activePath
     }
   }
@@ -160,5 +143,15 @@ export default {
 }
 .el-icon {
   margin-right: 10px;
+}
+
+.toggle-button {
+  background-color: #4a5064;
+  font-size: 10px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.2em;
+  cursor: pointer;
 }
 </style>
