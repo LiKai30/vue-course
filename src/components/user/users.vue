@@ -2,7 +2,7 @@
   <div>
     <!-- 面包屑导航栏 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
-      <el-breadcrumb-item :to="{ path: '/nome' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>用戶管理</el-breadcrumb-item>
       <el-breadcrumb-item>用戶列表</el-breadcrumb-item>
     </el-breadcrumb>
@@ -302,22 +302,26 @@ export default {
     },
     //删除操作
     async removeUserById(id) {
-      const comfirmResult = await this.$confirm("此操作将永久删除该用户, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      }).catch( err => err)
+      const comfirmResult = await this.$confirm(
+        "此操作将永久删除该用户, 是否继续?",
+        "提示",
+        {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        }
+      ).catch(err => err)
       // console.log(comfirmResult)
       // 点击确认返回confirm
-      // 取消则返回cancel 
-      if(comfirmResult !== 'confirm'){
-        return this.$message.info('已取消删除！')
-      } 
-      const {data:res} = await this.$http.delete('users/'+id)
-      if(res.meta.status !== 200){
-         return this.$message.error('删除失败！')
+      // 取消则返回cancel
+      if (comfirmResult !== "confirm") {
+        return this.$message.info("已取消删除！")
       }
-      return this.$message.success('已成功删除！')
+      const { data: res } = await this.$http.delete("users/" + id)
+      if (res.meta.status !== 200) {
+        return this.$message.error("删除失败！")
+      }
+      this.$message.success("已成功删除！")
       this.getUserList()
     }
   }
