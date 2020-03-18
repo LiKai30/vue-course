@@ -22,6 +22,11 @@
         </el-table-column>
       </el-table>
     </el-card>
+
+    <!-- 分配权限的对话框 -->
+    <el-dialog title="分配权限" :visible.sync="addRolesDialogVisible" width="50%">
+      
+    </el-dialog>
   </div>
 </template>
 
