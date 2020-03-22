@@ -69,8 +69,8 @@
     <!-- layout展示的功能组件 -->
     <el-pagination
       :current-page="queryInfo.pagenum"
-      :page-sizes="[1, 5, 10, 20]"
-      :page-size="100"
+      :page-sizes="[2, 5, 10, 20]"
+      :page-size="queryInfo.pagesize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total"
       @size-change="handleSizeChange"
@@ -178,7 +178,7 @@ export default {
         // 当前的页数
         pagenum: 1,
         // 当前显示的多少条数据
-        pagesize: 1
+        pagesize: 2
       },
       userList: [],
       total: 0,
