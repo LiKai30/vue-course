@@ -134,6 +134,8 @@ export default {
 //类名选择器的使用
 .el-aside {
   background-color: #333744;
+  //实现平滑过渡
+  transition:all 0.5s;
   .el-menu {
     border-right: none;
   }

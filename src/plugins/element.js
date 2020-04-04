@@ -28,7 +28,9 @@ import {
   Tag,
   Tree,
   Select,
-  Option
+  Option,
+  Timeline,
+  TimelineItem
 } from 'element-ui'
 
 // 注册为全局组件
@@ -60,6 +62,9 @@ Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
+
 
 
 // 和前面的不同，Message的使用需要挂载到vue的原型上
