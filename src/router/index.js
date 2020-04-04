@@ -7,6 +7,8 @@ import Users from '../components/user/users.vue'
 import Roles from '../components/purview/roles.vue'
 import Rights from '../components/purview/rights.vue'
 import  Order from '../components/order/order.vue'
+import  Report from '../components/report/report.vue'
+
 
 
 
@@ -24,7 +26,9 @@ const routes = [
       { path: '/users', component: Users },
       { path: '/roles', component: Roles },
       { path: '/rights', component: Rights },
-      { path: '/orders', component: Order }
+      { path: '/orders', component: Order },
+      { path: '/reports', component: Report }
+
     ]
 
   }
