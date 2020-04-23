@@ -7,7 +7,7 @@ import './plugins/element.js'
 import './assets/css/global.css'
 
 import axios from 'axios'
-// 设置请求的根路径
+// 设置请求的根路径，就不用每次写了
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 设置请求拦截器
 axios.interceptors.request.use(config => {

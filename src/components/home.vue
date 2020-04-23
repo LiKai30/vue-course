@@ -7,6 +7,7 @@
       </div>
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
+
     <el-container>
       <!-- 侧边栏 -->
       <!-- 三元运算符的使用 -->
@@ -76,7 +77,7 @@ export default {
       activePath: ""
     }
   },
-  // 生命周期函数?
+  // 页面创建，刷新就会重新创建。
   created() {
     this.getMenuList()
     this.activePath = window.sessionStorage.getItem("activePath")
@@ -101,6 +102,7 @@ export default {
     // 保存链接的激活状态
     saveNavState(activePath) {
       window.sessionStorage.setItem("activePath", activePath)
+      // 被激活的链接地址
       this.activePath = activePath
     }
   }
